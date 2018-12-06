@@ -24,6 +24,14 @@ app.use('/', catalogRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
 
+//connect database
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://127.0.0.1/express_locallibary_tutorial';
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

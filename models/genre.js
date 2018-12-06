@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 
 var GenreSchema = new Schema(
   {
-    book: [{type: Schema.Types.ObjectId, ref: 'Genre'}],
-    name: {type: String, required: true, min: 3, max: 100}
+    name: {type: String, required: true, min: 3, max: 100},
+    book: [{type: Schema.Types.ObjectId, ref: 'Book'}]
   }
 );
 
@@ -16,4 +16,4 @@ GenreSchema
     return '/genre/' + this.name;
   });
 
-  module.exports = mongoose.model('Genre', GenreSchema);
+module.exports = mongoose.model('Genre', GenreSchema);
